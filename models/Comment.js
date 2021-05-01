@@ -14,10 +14,15 @@ Comment.init(
       description: {
         type: DataTypes.STRING,
       },
-      date_created: {
+      created_at: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
+      },
+      update_at: {
+          type: DataTypes.DATE,
+          allowNull: false,
+          defaultValue: DataTypes.NOW,
       },
       user_id: {
         type: DataTypes.INTEGER,
@@ -29,7 +34,7 @@ Comment.init(
     },
     {
         sequelize,
-        timestamps: false,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'post',
