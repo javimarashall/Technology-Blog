@@ -20,14 +20,14 @@ const hbs = exphbs.create({});
 //sets up sessions
 const sess = {
   secret: 'Super secret secret',
-  cookie: {},
+  //cookie: {},
   //forces a session to be saved to the store 
   resave: false,
   //forces a session that is uninitialized to be saved
   saveUninitialized: false,
-  store: new SequelizeStore({
-    db: sequelize
-  })
+  //store: new SequelizeStore({
+    //db: sequelize
+  
 };
 //tells express to use routes
 app.use(routes);
@@ -45,6 +45,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //starts the server and syncs sequelize to database 
-sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log('Now listening: ' + PORT));
 });
