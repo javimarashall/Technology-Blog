@@ -17,6 +17,7 @@ router.get('/', async (req, res) => {
 });
 //login route
 router.get('/login', (req, res) => {
+  console.log("***ITWORKS!!!",req.session);
   if (req.session.logged_in) {
     //re-direct to root if not logged in
     res.redirect('/');
@@ -32,14 +33,15 @@ router.get('/post/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       //include comments and user attributes
       include: [
+        User,
         {
           model: Comment,
-          attributes: ['body'],
+          attributes: [User],
         },
-        {
-          model: User,
-          attributes:['username']
-        },
+        // {
+        //   model: User,
+        //   attributes:['username']
+        // },
       ],
     });
 
