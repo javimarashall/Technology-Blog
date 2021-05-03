@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Comment } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
-//comment route
+//comment route                               //THIS ONE REDIRECTS TO LOGIN
 router.post('/', withAuth, async (req, res) => {
     try {
         //create new comment

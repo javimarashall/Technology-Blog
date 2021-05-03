@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//show all post                 //THIS ONE REDIRECTS TO LOGIN PAGE
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({

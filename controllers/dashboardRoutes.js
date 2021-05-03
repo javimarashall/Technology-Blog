@@ -29,8 +29,8 @@ router.get('/', withAuth, async (req, res) => {
     res.render('login');
   });
 
-  //Get dashboard post by id
-router.get('/update/:id', withAuth, (req, res) => {
+  //Get dashboard post by id          //PAGE REDIRECTS TO LOGIN
+router.get('/update/:id', withAuth, async(req, res) => {
     try {
         //find post by primary key
         const postData = await Post.findByPk(req.params.id);
