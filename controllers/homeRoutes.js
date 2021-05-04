@@ -7,8 +7,9 @@ router.get('/', async (req, res) => {
     const postData = await Post.findAll();
 
     const posts = postData.map((post) => post.get({ plain: true }));
-    console.log("req.session",req.session);
-    res.render('home', { posts
+    console.log("req.session", req.session);
+    res.render('home', {
+      posts
     });
   } catch (err) {
     console.log('***', err)
@@ -17,7 +18,7 @@ router.get('/', async (req, res) => {
 });
 //login route
 router.get('/login', (req, res) => {
-  console.log("***ITWORKS!!!",req.session);
+  console.log("***ITWORKS!!!", req.session);
   if (req.session.logged_in) {
     //re-direct to root if not logged in
     res.redirect('/');
@@ -26,16 +27,25 @@ router.get('/login', (req, res) => {
   //render the login handlebars
   res.render('login');
 });
-  //get post by id
+//get post by id
 router.get('/post/:id', async (req, res) => {
+  console.log('**** post route')
   //get posts by id
   try {
-    const postData = await Post.findByPk(req.params.id, {
+    const postData = await Post.findOne({
       //include comments and user attributes
-      include: [User, 
+      where: {
+        id: req.params.id,
+      },
+      include: [
+        {
+          model: User,
+        },
         {
           model: Comment,
-          attributes: [User],
+          include: {
+            model: User,
+          },
         },
         // {
         //   model: User,
@@ -43,13 +53,18 @@ router.get('/post/:id', async (req, res) => {
         // },
       ],
     });
-
+    console.log(postData)
+    console.log('***')
     const post = postData.get({ plain: true });
+    console.log("testing post")
+    console.log(post)
     //render the comment handlebars
     res.render('comment', {
       post
     });
   } catch (err) {
+    console.log(err);
+    console.log("error***")
     res.status(500).json(err);
   }
 });

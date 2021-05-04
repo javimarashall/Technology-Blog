@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-//create a new user                            
+//create a new user                  --------THIS ROUTE WORKS-------------          
 router.post('/', async (req, res) => {
     console.log("********hit", req.session);
     try {
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-//login route for user
+//login route for user                        -------THIS ROUTE WORKS------------      
 router.post('/login', async (req, res) => {
     try {
         //find one where the username matches the entered username
@@ -61,7 +61,7 @@ router.post('/login', async (req, res) => {
         res.status(400).json({ message: 'No user found' });
     }
 });
-//logs the user out
+//logs the user out                 -----I GET A 204 MESSAGE ON INSOMNIA----- ---SO I THINK THIS ROUTE WORKS-------
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         //destroy the current session

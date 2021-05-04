@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models/');
 const withAuth = require('../utils/auth');
 
-//get all post from the current user
+//get all post from the current user        //THIS ROUTE WORKS
 router.get('/', withAuth, async (req, res) => {
     try {
       const postData = await Post.findAll({
@@ -18,7 +18,7 @@ router.get('/', withAuth, async (req, res) => {
       res.redirect('login');
     }
   });
-  //login route
+  //login route                         //THIS ROUTE WORKS
   router.get('/login', (req, res) => {
     if (req.session.logged_in) {
       //re-direct to root if not logged in
@@ -29,7 +29,7 @@ router.get('/', withAuth, async (req, res) => {
     res.render('login');
   });
 
-  //Get dashboard post by id          //PAGE REDIRECTS TO LOGIN
+  //Get dashboard post by id           //PAGE REDIRECTS TO LOGIN //ROUTE WORKS
 router.get('/update/:id', withAuth, async(req, res) => {
     try {
         //find post by primary key
