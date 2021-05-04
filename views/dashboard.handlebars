@@ -1,14 +1,15 @@
 <div class="w3-row">
-
-  <!-- Blog entries -->
-  <div class="w3-col l8 s12">
-    <!-- Blog entry -->
-    <div class="w3-card-4 w3-margin w3-white">
-      <div class="w3-container">
-        <h3><b>TITLE HEADING</b></h3>
-        <h5>Title description, <span class="w3-opacity">April 7, 2014</span></h5>
+  tacos are the best
+  {{#each posts}}
+    <!-- Blog entries -->
+    <div class="w3-col l8 s12">
+      <!-- Blog entry -->
+      <div class="w3-card-4 w3-margin w3-white">
+        <div class="w3-container">
+          <h3>{{title}}</h3>
+          <div>{{body}}</div>
+        </div>
       </div>
-
     </div>
-  </div>
+  {{/each}}
 </div>

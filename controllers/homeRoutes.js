@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 //login route
 router.get('/login', (req, res) => {
   console.log("***ITWORKS!!!", req.session);
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     //re-direct to root if not logged in
     res.redirect('/');
     return;

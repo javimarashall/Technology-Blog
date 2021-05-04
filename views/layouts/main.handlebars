@@ -3,7 +3,7 @@
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="/css/jass.css">
+ <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <style>
@@ -22,14 +22,19 @@ and is wrapped around the whole page content, except for the footer in this exam
 
 <!--navigation bar -->
 <nav class="w3-bar w3-black">
-  <a href="/home" class="w3-bar-item w3-button w3-mobile">Home</a>
+  <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
   {{!-- <a href="#" class="w3-bar-item w3-button w3-mobile">Dashboard</a> --}}
-  {{#if logged_in}}
-  <a href="/dashboard" class="w3-bar-item w3-button w3-mobile">Dashboard</a>
-  <button class="no-button" id="logout">logout</button>
-  {{else}}
-  <a href="/login" class="w3-bar-item w3-button w3-mobile">Login</a>
+
+  {{#if loggedIn}}
+    <a href="/dashboard" class="w3-bar-item w3-button w3-mobile">Dashboard</a>
+    <button href="/login"class="no-button" id="logout">logout</button>
   {{/if}}
+
+  {{#unless loggedIn}}
+    <a href="/dashboard" class="w3-bar-item w3-button w3-mobile">Dashboard</a>
+    <a href="/login" class="w3-bar-item w3-button w3-mobile">Login</a>
+  {{/unless}}
+
 </nav>
 </header>
 <main>
@@ -39,4 +44,8 @@ and is wrapped around the whole page content, except for the footer in this exam
 <!-- END w3-content -->
 </div>
 </body>
+<script src="./js/login.js"></script>
+<script src="./js/logout.js"></script>
+<script src="./js/blog.js"></script>
 </html>
+
